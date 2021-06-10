@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <button class="calc">Калькулятор дат</button>
+   <button class="timer">Таймер</button>
+
+   <form id="dateForm">
+      <h2>Калькулятор дат</h2>
+      <label for="date1">
+         <input type="date" id="date1" name="date1">
+      </label>
+      <label for="date2">
+         <input type="date" id="date2" name="date2">
+         <button type="submit">Рассчитать промежуток</button>
+      </label>
+   </form>
+   <p class="message"></p>
+
+   <form id="timeForm" class="hide">
+      <h2>Таймер</h2>
+      <label for="timer">
+         <input class="inputTimer" type="number" id="timer" name="timer">
+         <button type="submit">Обратиный отсчет</button>
+         <button class="buttonStop">Стоп</button>
+      </label>
+   </form>
+   <p class="message"></p>
+
+
+</body>
+
+</html>
