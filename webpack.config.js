@@ -21,6 +21,10 @@ module.exports = {
          {
             test: /.jpg$/,
             loader: 'file-loader'
+         },
+         {
+            test: /.mp3$/,
+            loader: 'file-loader'
          }
       ]
    },
