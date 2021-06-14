@@ -1,6 +1,16 @@
 import addMessage, { resetError as resetMessage, renderDiff, renderTime } from './common.js';
 import { diffDates } from './calc.js';
 import { showCalc, showTime } from './show.js';
+import { Howl, Howler } from 'howler';
+import sound from './assets/sound.mp3';
+
+
+
+let soundTimer = new Howl({
+   src: sound,
+});
+
+
 
 
 const buttonCalc = document.querySelector('.calc');
@@ -15,25 +25,43 @@ buttonTimer.addEventListener('click', () => {
 // timer
 const formTimer = document.querySelector('#timeForm');
 const stopTimer = document.querySelector('.buttonStop');
+
+
+
 formTimer.addEventListener('submit', (event) => {
    event.preventDefault();
    resetMessage();
    const addInput = document.querySelector('.inputTimer');
    let valueInput = addInput.value;
    renderTime(valueInput);
-   const intervalTimer = setInterval(getTime, 1000);
-   function getTime() {
 
-      if (valueInput == '0') {
+   const getTime = () => {
 
+      if (valueInput == 0) {
+         clearInterval(intervalTimer);
+         renderTime(valueInput);
+         soundTimer.play();
       } else {
-         valueInput -= 1;
+         valueInput--;
          renderTime(valueInput);
       }
+   };
+
+   const intervalTimer = setInterval(getTime, 1000);
+   if (valueInput >= 0 && valueInput !== '') {
+
+      getTime();
    }
+   else {
+      renderTime('Ошибка. Введите положительное число.');
+      clearInterval(intervalTimer);
+   }
+
+
    stopTimer.addEventListener('click', (event) => {
       event.preventDefault();
       clearInterval(intervalTimer);
+      soundTimer.play();
    });
 });
 
